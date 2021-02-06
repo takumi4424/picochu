@@ -1,0 +1,39 @@
+import argparse
+from typing import List, Callable
+
+def exec_subcommand(namesp: argparse.Namespace, other_args: List[str], error_exit: Callable[[str, Exception, bool], None]) -> None:
+    """Executes subcommand process.
+
+    This function will be called by '../picoco' automatically.
+
+    Args:
+        namesp (argparse.Namespace): Optiona arguments parsed and packed into namespace.
+        other_args (List[str]): Other arguments.
+        error_exit (Callable[[str, Exception, bool], None]): Callable object to be used for error printing and exit.
+    """
+    # example
+    print('Option argument for "--your-option" is "{}"'.format(namesp.your_option))
+    if len(other_args) < 2:
+        # example of print error and exit picoco command
+        error_exit('At least 2 arguments are required.')
+    elif other_args[0] != 'foo':
+        try:
+            raise Exception('The first argument must be "foo".')
+        except Exception as ex:
+            # example of print error with stacktrace of the exception and exit picoco command
+            error_exit('Exception occurred', ex)
+    elif other_args[1] != 'bar':
+        # exception will be caught by picoco command with printing error message and stacktrace
+        raise Exception('The second argument must be "bar".')
+
+def add_argument(parser: argparse.ArgumentParser) -> None:
+    """Adds subcommand option specifications.
+
+    This function will be called by '../picoco' automatically.
+
+    Args:
+        parser (argparse.ArgumentParser): Parser object to add option specifications.
+    """
+    # example
+    add = parser.add_argument
+    add('--your-option', dest='your_option', help="Your option.")
