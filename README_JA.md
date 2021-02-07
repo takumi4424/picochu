@@ -1,3 +1,4 @@
+
 [![日本語(original)](https://img.shields.io/badge/日本語-original%20document-brightgreen)](README_JA.md)
 [![English](https://img.shields.io/badge/English-document-brightgreen)](README.md)
 
@@ -5,25 +6,25 @@
 
 picoco: C/C++ build helper system for Raspberry Pi Pico
 =======================================================
-Now, the Raspberry Pi Pico is available :exclamation: :exclamation:
-I'm sure you've already bought it, and you're probably blinking your LEDs :smile:
+ついに Raspberry Pi Pico が発売されましたね :exclamation: :exclamation:
+早速購入したあなたも[スタートガイド](https://datasheets.raspberrypi.org/pico/getting-started-with-pico.pdf)を見ながらLEDをチカチカさせていることでしょう :smile:
 
-But... We don't really understand `cmake` or `make`, right?
-（I'm a beginner, so I don't understand it at all :sob:）
+でも……`cmake`とか`make`とかよくわかりにくくないですか？
+（私は初心者なのでよくわかりませんでした :sob:）
 
-So, let's use this `picoco` tool to develop Raspberry Pi Pico more easily :exclamation: :exclamation:
+そこで，この`picoco`ツールを利用してより簡単に Raspberry Pi Pico の開発を行いましょう :exclamation: :exclamation:
 
-If you can use the `docker` command, you can quickly set up a development environment :+1:
-(See: [Develop with Docker](#develop-with-docker))
+もしあなたが`docker`コマンドを使用できるのなら，すぐに開発環境を立ち上げることができます :+1:
+([Develop with Docker](#develop-with-docker)まで読み飛ばしてください．)
 
-## Table of contents
+## 目次
 - [Installation](#installation)
 - [Usage](#usage)
   - [Develop with Docker](#develop-with-docker)
   - [Develop in local environment](#develop-in-local-environment)
 
 ## Installation
-At a minimum, followings are required:
+最低限以下のソフトウェアが必要です：
 - [`picoco`](https://github.com/takumi4424/picoco)
   - `python3`
 - [`pico-sdk`](https://github.com/raspberrypi/pico-sdk)
@@ -32,13 +33,13 @@ At a minimum, followings are required:
   - `libnewlib-arm-none-eabi`
   - `build-essential`
 
-**TODO: make installation script**
+**TODO: インストールスクリプトの作成**
 
 ### Ubuntu
 ```sh
 $ sudo apt update
 $ sudo apt install -y python3 cmake gcc-arm-none-eabi libnewlib-arm-none-eabi build-essential
-$ INSTALL_DIR=$HOME/.pico # e.g. "$HOME/.pico", "/opt/pico", etc.
+$ INSTALL_DIR=$HOME/.pico # 適当なパス: $HOME/.pico や /opt/pico など……
 $ mkdir -p $(INSTALL_DIR)
 $ git -C $INSTALL_DIR clone https://github.com/takumi4424/picoco.git
 $ git -C $INSTALL_DIR clone https://github.com/raspberrypi/pico-sdk.git
@@ -55,17 +56,17 @@ TODO
 
 
 ## Usage
-Examples in this section will do the followings:
-- Create a new package named `test_pico`
-  - It includes LED blinking code (`test_pico/src/test_pico_main.c`)
-  - It includes `CMakeLists.txt`
-- Build `test_pico` package
-  - It makes `test_pico/build/test_pico.uf2`
+ここで挙げる例では，以下を行います．
+- `test_pico`というパッケージを作成
+  - LED点滅させるコード(`test_pico/src/test_pico_main.c`)
+  - `CMakeLists.txt`
+- `test_pico`パッケージをビルド
+  - `test_pico/build/test_pico.uf2`の生成
 
-Copy the product `test_pico/build/test_pico.uf2` to your Raspberry Pi Pico and the LED will blink :examination: :examination:
+成果物である`test_pico/build/test_pico.uf2`をあなたの Raspberry Pi Pico にコピーすれば，LEDが点滅するはずです :exclamation: :exclamation:
 
 ### Develop with Docker
-You can use [picoco image](https://hub.docker.com/repository/docker/takumi4424/picoco) to quickly launch the development environment :+1:
+[picocoイメージ](https://hub.docker.com/repository/docker/takumi4424/picoco)を利用すると，すぐに開発環境の立ち上げができます :+1:
 ```sh
 host$ docker run -it takumi4424/picoco:latest
 container$ picoco create_pkg /root/test_pico
