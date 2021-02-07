@@ -3,17 +3,17 @@
 
 <img src="https://github.com/takumi4424.png" alt="takumi4424 logo" height="50" align="right">
 
-picoco: C/C++ build helper system for Raspberry Pi Pico
+picoco: C/C++ build helper system for RPi Pico
 =======================================================
-Now, the Raspberry Pi Pico is available :exclamation: :exclamation:
+Now, the Raspberry Pi Pico is available :exclamation: :exclamation: <br>
 I'm sure you've already bought it, and you're probably blinking your LEDs :smile:
 
-But... We don't really understand `cmake` or `make`, right?
+But... We don't really understand `cmake` or `make`, right? <br>
 （I'm a beginner, so I don't understand it at all :sob:）
 
 So, let's use this `picoco` tool to develop Raspberry Pi Pico more easily :exclamation: :exclamation:
 
-If you can use the `docker` command, you can quickly set up a development environment :+1:
+If you can use the `docker` command, you can quickly set up a development environment :+1: <br>
 (See: [Develop with Docker](#develop-with-docker))
 
 ## Table of contents
@@ -67,11 +67,13 @@ Copy the product `test_pico/build/test_pico.uf2` to your Raspberry Pi Pico and t
 ### Develop with Docker
 You can use [picoco image](https://hub.docker.com/repository/docker/takumi4424/picoco) to quickly launch the development environment :+1:
 ```sh
-host$ docker run -it takumi4424/picoco:latest
-container$ picoco create_pkg /root/test_pico
-container$ cd /root/test_pico
-container$ picoco build
+H$ docker run -it takumi4424/picoco:latest
+C$ picoco create_pkg /root/test_pico
+C$ cd /root/test_pico
+C$ picoco build
+C$ ls build/*.uf2
 ```
+`H$`: Host, `C$`: Container
 
 ### Develop in local environment
 ```sh
